@@ -18,12 +18,12 @@ static inline void hecc_encode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
 
         if(0 == j % 8) {
             *outbuf++ = data = *inbuf++;
+            p2 ^= __builtin_parity(data);
         }
 
         if(data & 1) {
             p1 = p1 ^ (uint8_t)i;
             data >>= 1;
-            p2 = !p2;
         }
 
         j++;
@@ -138,12 +138,12 @@ static inline bool hecc_decode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
 
         if(0 == j % 8) {
             data = *inbuf++;
+            p2 ^= __builtin_parity(data);
         }
 
         if(data & 1) {
             p1 = p1 ^ (uint8_t)i;
             data >>= 1;
-            p2 = !p2;
         }
 
         j++;
@@ -154,11 +154,15 @@ static inline bool hecc_decode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
     if(p1) {
         //Check overall message parity
         uint8_t pm = check;
+#if 1
+        p2 ^= __builtin_parity(pm);
+#else
         pm ^= pm >> 4;
         pm ^= pm >> 2;
         pm ^= pm >> 1;
         pm &= 1;
         p2 ^= pm;
+#endif
 
         if(!p2) {
             // At least two errors ...
