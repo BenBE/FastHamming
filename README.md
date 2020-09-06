@@ -18,7 +18,7 @@ encode and decode buffers.
 Inspiration
 ===========
 
-This library was inspired by the explanations presented by @3blue1brown in
+This library was inspired by the explanations presented by [@3blue1brown](https://twitter.com/3blue1brown) in
 the following Youtube videos:
 
 - [Explanation Part 1](https://youtu.be/X8jsijhllIA)
