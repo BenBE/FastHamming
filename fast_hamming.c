@@ -29,12 +29,15 @@ static inline void hecc_encode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
         j++;
     }
 
-    data = p1;
-    for(size_t i = 0; i < 8; i++, data >>= 1) {
-        if(data & 1) {
-            p2 = !p2;
-        }
-    }
+#if 1
+    p2 ^= __buildin_parity(p1);
+#else
+    p2 ^= p1;
+    p2 ^= p2 >> 4;
+    p2 ^= p2 >> 2;
+    p2 ^= p2 >> 1;
+    p2 &= 1;
+#endif
 
     *outbuf = p1 + (p2 << 7);
 }
