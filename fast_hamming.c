@@ -30,7 +30,7 @@ static inline void hecc_encode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
     }
 
 #if 1
-    p2 ^= __buildin_parity(p1);
+    p2 ^= __builtin_parity(p1);
 #else
     p2 ^= p1;
     p2 ^= p2 >> 4;
