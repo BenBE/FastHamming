@@ -23,8 +23,8 @@ static inline void hecc_encode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
 
         if(data & 1) {
             p1 = p1 ^ (uint8_t)i;
-            data >>= 1;
         }
+        data >>= 1;
 
         j++;
     }
@@ -146,8 +146,8 @@ static inline bool hecc_decode_impl(const uint8_t *inbuf, uint8_t *outbuf, size_
 
         if(data & 1) {
             p1 = p1 ^ (uint8_t)i;
-            data >>= 1;
         }
+        data >>= 1;
 
         j++;
     }
