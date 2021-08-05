@@ -1,7 +1,7 @@
 FastHamming
 ===========
 
-This is a fast implementation of truncateable extended (127,120) Hamming codes.
+This is a fast implementation of a truncateable extended (127,120) Hamming code.
 
 It features an encoder and decoder that allow for any number of bytes to be
 transferred. If the amount of data that needs to be transferred is too large
@@ -28,4 +28,4 @@ the following Youtube videos:
 License
 =======
 
-This library is lincensed under AGPLv3.
+This library is licensed under AGPLv3.
