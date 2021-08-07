@@ -90,7 +90,7 @@ bool hecc_encode(const uint8_t *inbuf, size_t insize, uint8_t *outbuf, size_t *o
 
 static inline uint8_t log2uint8(uint8_t v) {
 #if 1
-    return 32 - __builtin_clz(v);
+    return 31 - __builtin_clz(v);
 #else
     register uint8_t r = 0; // result of log2(v) will go here
 
