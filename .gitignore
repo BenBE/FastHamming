@@ -1,6 +1,4 @@
-*
 
-!*.c
-!*.h
-!*.md
-!Makefile
+Debug/
+
+.vs/

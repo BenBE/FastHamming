@@ -1,3 +1,10 @@
+/*
+ * fast_hamming_test.c
+ *
+ * Created: 05.09.2020
+ *  Author: BenBE (https://github.com/BenBE)
+ */ 
+
 #include "fast_hamming.h"
 
 __attribute__((nonnull(1,2)))
