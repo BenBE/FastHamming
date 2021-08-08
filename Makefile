@@ -21,7 +21,7 @@ lib: $(LIBDEST)
 	$(AR) rc $@ $^ && $(RANLIB) $@
 
 %.o %.d: %.c
-	$(CC) -MMD -o $*.o -c $<
+	$(CC) $(CFLAGS) -MMD -o $*.o -c $<
 
 -include $(LIBDEP)
 
@@ -30,7 +30,7 @@ test: $(TESTDEST)
 	for a in $^; do printf 'Running %s …\n' "$$a"; ./$$a; done
 
 test_%: test/%.c $(LIBDEST)
-	$(CC) -I. -o $@ $^
+	$(CC) -I. $(CFLAGS) -o $@ $^ $(LFLAGS)
 
 clean:
 	-find . -type f -name '*.d' -print -delete
